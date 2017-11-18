@@ -8,10 +8,14 @@ public class Point {
 	ArrayList<Pies> Particle;
 	ArrayList<Claster> agregates;
 	double range = 3.5E-8;
+	static String link = "";
 	private double time=0;
 	double avgWidth;
 	int numAgregats;
 	double avgLength;
+	public static void setLink(String Link){
+		link = Link;
+	}
 	public Point(String fileName){//FFANS constructor
 		Particle = fillFFans_standart(fileName);
 		couple = findCouple();
@@ -33,7 +37,7 @@ public class Point {
 		String textDat = "";
 		String[] part;
 		try {
-			Scanner fileDat = new Scanner(new File("/home/dima/workspace/Pieses_Analisys_v2(remake)/bin/dimensions/"+fileName+".dat"));
+			Scanner fileDat = new Scanner(new File(link+fileName+".dat"));
 			textDat = fileDat.useDelimiter("\\A").next();
 			fileDat.close();
 		} catch (FileNotFoundException e1) {
@@ -191,7 +195,7 @@ public class Point {
 		String textDat = "";
 		String[] part;
 		try {
-			Scanner fileDat = new Scanner(new File("/home/dima/workspace/Pieses_Analisys_v2(remake)/bin/dimensions/"+fileName+".log"));
+			Scanner fileDat = new Scanner(new File(link+fileName+".log"));
 			textDat = fileDat.useDelimiter("\\A").next();
 			fileDat.close();
 		} catch (FileNotFoundException e1) {
