@@ -35,12 +35,17 @@ public class CSVFile {
 			buffer = ";".getBytes();
 			fos.write(buffer,0,buffer.length);
 			
-			buffer = (points.get(i).avgWidth+"").toString().getBytes();
+			buffer = (points.get(i).getAvgWidth()+"").toString().getBytes();
 			fos.write(buffer,0,buffer.length);
 			
 			buffer = ";".getBytes();
 			fos.write(buffer,0,buffer.length);
 			
+			buffer = (points.get(i).getAvgS()+"").toString().getBytes();
+			fos.write(buffer,0,buffer.length);
+			
+			buffer = ";".getBytes();
+			fos.write(buffer,0,buffer.length);
 		//	buffer = (data.get(i).averageSize2+"").toString().getBytes();
 	    //  fos.write(buffer,0,buffer.length);
 			

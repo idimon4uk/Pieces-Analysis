@@ -7,12 +7,13 @@ public class Point {
 	ArrayList<couple_Pies> couple;
 	ArrayList<Pies> Particle;
 	ArrayList<Claster> agregates;
-	double range = 3.5E-8;
+	double range = 3.0;
 	static String link = "";
 	private double time=0;
 	double avgWidth;
 	int numAgregats;
 	double avgLength;
+	double avgS;
 	public static void setLink(String Link){
 		link = Link;
 	}
@@ -165,12 +166,15 @@ public class Point {
 		numAgregats = agregates.size();
 		double sumWidth = 0;
 		double sumLength =0;
+		double sumS = 0;
 		for(int i =0;i<agregates.size();i++){
 			sumWidth+= agregates.get(i).Analys();
 			sumLength+=agregates.get(i).size();
+			sumS += agregates.get(i).S_Full();
 		}
 		avgWidth = sumWidth/numAgregats;
-		avgLength =Particle.size()/(agregates.size()+(Particle.size()-sumLength)) ;
+		avgS = sumS/numAgregats;
+		avgLength =Particle.size()/(agregates.size()+(Particle.size()-sumLength));
 		System.out.println("Num of pieses = "+Particle.size()+" num of agregates = "+numAgregats+" avgLen = "+avgLength+" pieses, avgWidth = "+ avgWidth);
 	}
 	public ArrayList<Pies> fillTest(){
@@ -206,7 +210,9 @@ public class Point {
 				ArrayList <Pies> Particle = new ArrayList<Pies>();
 				try{
 			    int j = 0;
-				for(int i=4*delta*numPies+1+delta;i<(4*(delta+1)*numPies)/*textDat.length()*/;i+=4,j++)
+			    int start = 4*delta*numPies+1+delta;//4*delta*numPies+1+delta
+			    int end = start + 4*numPies;//(4*(delta+1)*numPies)
+				for(int i=start;i<end/*textDat.length()*/;i+=4,j++)
 				{
 					Particle.add(new Pies(j,Double.parseDouble(part[(i+1)]),Double.parseDouble(part[(i+2)]),Double.parseDouble(part[(i+3)])));
 					System.out.println(Particle.get(j).getIndex()+";x = "+Particle.get(j).x+";y = "+Particle.get(j).y+";z = "+Particle.get(j).z);
@@ -229,5 +235,8 @@ public class Point {
 	}
 	public double getAvgLength(){
 		return avgLength;
+	}
+	public double getAvgS(){
+		return avgS;
 	}
 }
