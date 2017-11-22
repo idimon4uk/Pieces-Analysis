@@ -10,14 +10,17 @@ public class Claster {
 		return S(claster.get(getInd(true)),claster.get(getInd(false)));
 	}
 	public double S(Pies a, Pies b){
-		double d = Math.sqrt(Math.pow(Math.abs(a.x-b.x), 2)+Math.pow(Math.abs(a.y-b.y), 2));
-		return Math.PI*Math.pow(((d/2)+r), 2);
+		double d = radius(a,b);
+		return Math.PI*Math.pow(((d)+r), 2);
+	}
+	private double radius(Pies a , Pies b){
+		return Math.sqrt(Math.pow(Math.abs(a.x-b.x), 2)+Math.pow(Math.abs(a.y-b.y), 2))/2;
 	}
 	public double heigh(Pies a, Pies b){
 		return Math.sqrt(Math.pow(Math.abs(a.x-b.x), 2)+Math.pow(Math.abs(a.z-b.z), 2));
 	}
 	public double S_Full(){
-		return Analys()*heigh(claster.get(getIndHeigh(true)),claster.get(getIndHeigh(false)));
+		return 2*Math.PI*radius(claster.get(getInd(true)),claster.get(getInd(false)))*heigh(claster.get(getIndHeigh(true)),claster.get(getIndHeigh(false)));
 	}
 	private int getIndHeigh(boolean isPiesA){
 		int ind1 =0;

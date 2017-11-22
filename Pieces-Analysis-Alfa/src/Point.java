@@ -7,13 +7,16 @@ public class Point {
 	ArrayList<couple_Pies> couple;
 	ArrayList<Pies> Particle;
 	ArrayList<Claster> agregates;
-	double range = 3.0;
+	static double range = 3.0;
 	static String link = "";
 	private double time=0;
 	double avgWidth;
 	int numAgregats;
 	double avgLength;
 	double avgS;
+	public static void setRange(double range_){
+		range = range_;
+	}
 	public static void setLink(String Link){
 		link = Link;
 	}
@@ -175,24 +178,23 @@ public class Point {
 		avgWidth = sumWidth/numAgregats;
 		avgS = sumS/numAgregats;
 		avgLength =Particle.size()/(agregates.size()+(Particle.size()-sumLength));
-		System.out.println("Num of pieses = "+Particle.size()+" num of agregates = "+numAgregats+" avgLen = "+avgLength+" pieses, avgWidth = "+ avgWidth);
+		System.out.println("Num of pieses = "+Particle.size()+" num of agregates = "+numAgregats+" avgLen = "+avgLength+" pieses, avgWidth = "+ avgWidth+ " ; avgS = "+avgS);
 	}
 	public ArrayList<Pies> fillTest(){
 		ArrayList<Pies> test = new ArrayList<Pies>();
 		test.add(new Pies(0,0,0,0));
-		test.add(new Pies(1,0,0,3.3E-8));
-		test.add(new Pies(2,0,0,6.6E-8));
-		test.add(new Pies(3,0,0,9.9E-8));
-		test.add(new Pies(4,0,0,13.2E-8));
-		test.add(new Pies(5,0,3.3E-8,0));
-		test.add(new Pies(6,0,6.6E-8,0));
-		test.add(new Pies(7,3.3E-8,0,3.3E-8));
-		
-		test.add(new Pies(8,1,0,0));
-		test.add(new Pies(9,1,0,3.3E-8));
-		test.add(new Pies(10,1,0,6.6E-8));
-		test.add(new Pies(11,1,0,9.9E-8));
-		test.add(new Pies(12,1,0,13.2E-8));
+		test.add(new Pies(1,0,1,0));
+		test.add(new Pies(2,0,2,0));
+		test.add(new Pies(3,0,1,1));
+		test.add(new Pies(4,0,1,2));
+		test.add(new Pies(5,0,2,2));
+		test.add(new Pies(6,0,1,3));
+		test.add(new Pies(7,0,2,1));
+		//test.add(new Pies(8,0,0.5,4));
+		//test.add(new Pies(9,1,0,3.3E-8));
+		//test.add(new Pies(10,1,0,6.6E-8));
+		//test.add(new Pies(11,1,0,9.9E-8));
+		//test.add(new Pies(12,1,0,13.2E-8));
 		return test;
 	}
 	public ArrayList<Pies> fillFromLog(String fileName, int delta, int numPies){
