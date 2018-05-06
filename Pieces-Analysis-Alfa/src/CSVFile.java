@@ -54,6 +54,12 @@ public class CSVFile {
 			buffer = ";".getBytes();
 			fos.write(buffer,0,buffer.length);
 			
+			buffer = (points.get(i).getAvgScatering()+"").toString().getBytes();
+			fos.write(buffer,0,buffer.length);
+			
+			buffer = ";".getBytes();
+			fos.write(buffer,0,buffer.length);
+			
 			if(i!=0){
 				sumSpeed +=(points.get(i).getAvgLength() - points.get(i-1).getAvgLength())/(points.get(i).getTime() - points.get(i-1).getTime());
 				buffer = ((points.get(i).getAvgLength() - points.get(i-1).getAvgLength())/(points.get(i).getTime() - points.get(i-1).getTime())+"").toString().getBytes();

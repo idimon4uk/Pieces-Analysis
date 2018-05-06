@@ -9,6 +9,11 @@ public class Claster {
 	public double Analys(){
 		return S(claster.get(getInd(true)),claster.get(getInd(false)));
 	}
+	public double scattering() {
+		double a = heigh(claster.get(getIndHeigh(true)),claster.get(getIndHeigh(false)))/2;
+		double b = radius(claster.get(getInd(true)),claster.get(getInd(false)));
+		return Scattering.calc(a/b);
+	}
 	public double S(Pies a, Pies b){
 		double d = radius(a,b);
 		return Math.PI*Math.pow(((d)+r), 2);
@@ -74,5 +79,9 @@ public class Claster {
 	}
     public int size(){
     	return claster.size();
+    }
+    public double qScateAproximation(){//lamda = 200 nm
+    	double a_b = (heigh(claster.get(getIndHeigh(true)),claster.get(getIndHeigh(false)))/2)/(radius(claster.get(getInd(true)),claster.get(getInd(false))));
+    	return 4*Math.pow(10, 13)*Math.pow(a_b,-2.71);
     }
 }

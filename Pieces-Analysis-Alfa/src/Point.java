@@ -14,6 +14,7 @@ public class Point {
 	int numAgregats;
 	double avgLength;
 	double avgS;
+	double avgScatering;
 	public static void setRange(double range_){
 		range = range_;
 	}
@@ -170,15 +171,18 @@ public class Point {
 		double sumWidth = 0;
 		double sumLength =0;
 		double sumS = 0;
+		double sumScatering = 0;
 		for(int i =0;i<agregates.size();i++){
 			sumWidth+= agregates.get(i).Analys();
 			sumLength+=agregates.get(i).size();
 			sumS += agregates.get(i).S_Full();
+			sumScatering += agregates.get(i).scattering();
 		}
 		avgWidth = sumWidth/numAgregats;
 		avgS = sumS/numAgregats;
 		avgLength =Particle.size()/(agregates.size()+(Particle.size()-sumLength));
-		System.out.println("Num of pieses = "+Particle.size()+" num of agregates = "+numAgregats+" avgLen = "+avgLength+" pieses, avgWidth = "+ avgWidth+ " ; avgS = "+avgS);
+		avgScatering = sumScatering/numAgregats;
+		System.out.println("Num of pieses = "+Particle.size()+" num of agregates = "+numAgregats+" avgLen = "+avgLength+" pieses, avgWidth = "+ avgWidth+ " ; avgS = "+avgS + " ; avgScat = "+avgScatering);
 	}
 	public ArrayList<Pies> fillTest(){
 		ArrayList<Pies> test = new ArrayList<Pies>();
@@ -240,5 +244,8 @@ public class Point {
 	}
 	public double getAvgS(){
 		return avgS;
+	}
+	public double getAvgScatering() {
+		return avgScatering;
 	}
 }
